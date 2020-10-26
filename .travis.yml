@@ -14,7 +14,9 @@ script:
 - export ARCH=arm64
 - make exynos7885-a20ektt_defconfig
 - make -j64
-- mkdir A20e_Kernel_Out
-- cp arch/arm64/boot/Image A20e_Kernel_Out
-- zip A20e_Kernel_Out
-- curl --upload-file A20e_Kernel_Out.zip https://transfer.sh/A20e_Kernel_Out.zip
+- mkdir out
+- cp arch/arm64/boot/Image out 
+- cp arch/arm64/boot/dts/exynos/dtbo/exynos7884B-a20e_kor_ktt_00.dtbo out
+- cp arch/arm64/boot/dts/exynos/dtbo/exynos7884B-a20e_kor_ktt_00.dts out
+- zip -r Kernel out
+- curl --upload-file Kernel.zip https://transfer.sh/Kernel.zip
