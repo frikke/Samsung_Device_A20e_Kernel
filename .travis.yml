@@ -1,0 +1,17 @@
+arch: amd64
+os: linux
+language: generic
+dist: focal
+script:
+- git config --global user.name "홍길동"
+- git config --global user.email "support@webisfree.com" 
+- yes | git clone https://github.com/roynatech2544/Samsung_Device_A20e_Kernel.git -b Kernel_4.4.177
+- cd Samsung_Device_A20e_Kernel
+- export ANDROID_MAJOR_VERSION=q
+- export ARCH=arm64
+- make exynos7885-a20ektt_defconfig
+- make -j64
+- mkdir A20e_Kernel_Out
+- cp arch/arm64/boot/Image A20e_Kernel_Out
+- zip A20e_Kernel_Out
+- curl --upload-file A20e_Kernel_Out.zip https://transfer.sh/A20e_Kernel_Out.zip
