@@ -6,7 +6,7 @@ addons:
      apt:
      - gcc-aarch64-linux-gnu
 script:
-- git config --global user.name "홍길동"
+- git config --global user.name "abc"
 - git config --global user.email "support@webisfree.com" 
 - yes | git clone https://github.com/roynatech2544/Samsung_Device_A20e_Kernel.git -b Kernel_4.4.177
 - cd Samsung_Device_A20e_Kernel
@@ -18,5 +18,5 @@ script:
 - cp arch/arm64/boot/Image out 
 - cp arch/arm64/boot/dts/exynos/dtbo/exynos7884B-a20e_kor_ktt_00.dtbo out
 - cp arch/arm64/boot/dts/exynos/dtbo/exynos7884B-a20e_kor_ktt_00.dts out
-- zip -r Kernel out
-- curl --upload-file Kernel.zip https://transfer.sh/Kernel.zip
+- zip -r Kernel_$TRAVIS_BUILD_NUMBER out
+- curl --upload-file Kernel_$TRAVIS_BUILD_NUMBER.zip https://transfer.sh/Kernel.zip
